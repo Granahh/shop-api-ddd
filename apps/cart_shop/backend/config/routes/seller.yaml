@@ -1,0 +1,10 @@
+seller_put:
+    path: /seller/{id}
+    controller: Granah\Apps\CartShop\Backend\Controller\Seller\SellerPutController
+    methods: [PUT]
+
+seller_delete:
+    path: /seller/{id}
+    controller: Granah\Apps\CartShop\Backend\Controller\Seller\SellerDeleteController
+    methods: [DELETE]
+

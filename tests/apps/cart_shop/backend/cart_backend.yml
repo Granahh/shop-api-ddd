@@ -1,0 +1,24 @@
+cart_backend:
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      kernel:
+        class: Granah\Apps\CartShop\Backend\CartBackendKernel
+      bootstrap: apps/bootstrap.php
+    Behat\MinkExtension:
+      sessions:
+        symfony:
+          symfony: ~
+      base_url: ''
+
+  suites:
+    health_check:
+      paths: [ tests/apps/cart_shop/backend/features/health_check ]
+      contexts:
+        - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiRequestContext
+        - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiResponseContext
+    seller:
+      paths: [ tests/apps/cart_shop/backend/features/seller ]
+      contexts:
+        - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiRequestContext
+        - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiResponseContext
+

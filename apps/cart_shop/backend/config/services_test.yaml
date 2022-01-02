@@ -1,0 +1,12 @@
+framework:
+  test: true
+
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+
+  Granah\CartShop\Tests\:
+    resource: '../../../../tests/src'
+
+  Granah\Shared\Domain\RandomNumberGenerator: '@Granah\CartShop\Tests\Shared\Infrastructure\ConstantRandomNumberGenerator'

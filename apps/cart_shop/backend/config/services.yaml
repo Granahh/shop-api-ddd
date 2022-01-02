@@ -1,0 +1,56 @@
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+
+  #configure
+  _instanceof:
+    Granah\Shared\Domain\Bus\Command\CommandHandler:
+      tags: [granah.command_handler]
+    Granah\Shared\Domain\Bus\Query\QueryHandler:
+      tags: [granah.query_handler]
+    Granah\Shared\Domain\Bus\Event\DomainEventSubscriber:
+      tags: [ 'granah.domain_event_subscriber' ]
+
+  Granah\Apps\CartShop\Backend\Controller\:
+    resource: '../src/Controller'
+    tags: ['controller.service_arguments']
+
+  Granah\:
+    resource: '../../../../src'
+
+  #EventBus
+
+  Granah\Shared\Infrastructure\Bus\Event\InMemorySymfonyEventBus:
+    arguments: [ !tagged granah.domain_event_subscriber ]
+    lazy: true
+
+  # Command/Query Handlers
+  Granah\Shared\Infrastructure\Bus\Command\InMemorySymfonyCommandBus:
+    arguments: [ !tagged granah.command_handler ]
+
+  Granah\Shared\Infrastructure\Bus\Query\InMemorySymfonyQueryBus:
+    arguments: [ !tagged granah.query_handler ]
+
+  Granah\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  Granah\Shared\Infrastructure\Symfony\ApiExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: onException }
+
+  # Databases
+  Doctrine\ORM\EntityManager:
+    factory: [ Granah\CartShop\Shared\Infrastructure\Doctrine\CartShopEntityManagerFactory, create ]
+    arguments:
+      - driver: '%env(CS_DATABASE_DRIVER)%'
+        host: '%env(CS_DATABASE_HOST)%'
+        port: '%env(CS_DATABASE_PORT)%'
+        dbname: '%env(CS_DATABASE_NAME)%'
+        user: '%env(CS_DATABASE_USER)%'
+        password: '%env(CS_DATABASE_PASSWORD)%'
+      - '%env(APP_ENV)%'
+    tags:
+      - { name: granah.database_connection }
+    public: true
