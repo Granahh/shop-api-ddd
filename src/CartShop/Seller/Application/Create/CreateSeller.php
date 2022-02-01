@@ -21,3 +21,4 @@ final class CreateSeller
         $this->repository->save($seller);
     }
 }
+

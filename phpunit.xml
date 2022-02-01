@@ -22,9 +22,14 @@
         stopOnRisky="true"
         verbose="false">
 
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak" />
+        <env name="APP_ENV" value="test"/>
+    </php>
     <testsuites>
-        <testsuite name="Contexts">
-            <directory>./tests/src</directory>
+        <testsuite name="cartshop">
+            <directory>./tests/src/CartShop</directory>
         </testsuite>
     </testsuites>
 </phpunit>

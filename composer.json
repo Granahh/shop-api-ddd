@@ -23,7 +23,9 @@
     "ramsey/uuid": "^3.9",
 
     "doctrine/dbal": "^2.10",
-    "doctrine/orm": "^2.7"
+    "doctrine/orm": "^2.7",
+    "mockery/mockery": "^1.5",
+    "fzaninotto/faker": "^1.5"
 
 
 
