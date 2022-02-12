@@ -4,7 +4,6 @@ namespace Granah\CartShop\Tests\CartShop\Seller\Application\Create;
 
 use Granah\CartShop\Seller\Application\Create\CreateSeller;
 use Granah\CartShop\Seller\Application\Create\CreateSellerCommandHandler;
-use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerMother;
 use Granah\CartShop\Tests\CartShop\Seller\SellerModuleUnitTestCase;
 
 
