@@ -25,7 +25,8 @@
     "doctrine/dbal": "^2.10",
     "doctrine/orm": "^2.7",
     "mockery/mockery": "^1.5",
-    "fzaninotto/faker": "^1.5"
+    "fzaninotto/faker": "^1.5",
+    "symfony/test-pack": "^1.0"
 
 
 

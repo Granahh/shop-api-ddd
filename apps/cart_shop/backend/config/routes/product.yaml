@@ -1,0 +1,5 @@
+product_put:
+    path: /product/{id}
+    controller: Granah\Apps\CartShop\Backend\Controller\Product\ProductPutController
+    methods: [PUT]
+
