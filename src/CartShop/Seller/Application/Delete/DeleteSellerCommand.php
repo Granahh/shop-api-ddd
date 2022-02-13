@@ -15,6 +15,4 @@ final class DeleteSellerCommand implements Command
     {
         return $this->id;
     }
-
-
 }

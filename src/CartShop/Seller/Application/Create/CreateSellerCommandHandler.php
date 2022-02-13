@@ -16,6 +16,6 @@ final class CreateSellerCommandHandler implements CommandHandler
 
     public function __invoke(CreateSellerCommand $command): void
     {
-       $this->creator->__invoke(new SellerId($command->getId()), new SellerName($command->getName()), new SellerEmail($command->getEmail()));
+       $this->creator->__invoke(new SellerId($command->id()), new SellerName($command->name()), new SellerEmail($command->email()));
     }
 }

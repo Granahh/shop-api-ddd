@@ -3,7 +3,7 @@
 namespace Granah\CartShop\Tests\CartShop\Seller\Application\Delete;
 
 use Granah\CartShop\Seller\Application\Delete\DeleteSellerCommand;
-use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerIdMother;
+use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 
 final class DeleteSellerCommandMother
 {

@@ -11,18 +11,18 @@ final class CreateSellerCommand implements Command
     {
     }
 
-    public function getId(): string
+    public function id(): string
     {
         return $this->id;
     }
 
-    public function getName(): string
+    public function name(): string
     {
         return $this->name;
     }
 
 
-    public function getEmail(): string
+    public function email(): string
     {
         return $this->email;
     }

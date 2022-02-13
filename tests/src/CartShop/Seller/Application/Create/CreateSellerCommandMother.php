@@ -6,8 +6,8 @@ use Granah\CartShop\Seller\Domain\SellerEmail;
 use Granah\CartShop\Seller\Domain\SellerName;
 use Granah\CartShop\Shared\Domain\SellerId;
 use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerEmailMother;
-use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerIdMother;
 use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerNameMother;
+use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 
 
 final class CreateSellerCommandMother
