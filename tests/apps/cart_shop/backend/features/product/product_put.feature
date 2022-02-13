@@ -5,6 +5,7 @@ Feature: Create a new Product
     """
     {
       "name": "Zapatillas Nike",
+      "description": "Zapatillas de calidad",
       "email": "Las mejores zapatillas del mercado",
       "price": "100",
       "sellerId": "5c9b8f8f-c8e0-4f5e-b8f8-f8f8f8f8f8f8"

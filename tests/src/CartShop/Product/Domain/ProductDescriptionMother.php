@@ -9,6 +9,6 @@ final class ProductDescriptionMother
 {
     public static function create($value = null): ProductDescription
     {
-        return new ProductDescription($value ?? MotherCreator::random()->paragraph);
+        return new ProductDescription($value ?? MotherCreator::random()->name);
     }
 }
