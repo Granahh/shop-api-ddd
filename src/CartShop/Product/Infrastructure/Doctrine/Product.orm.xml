@@ -10,7 +10,7 @@
         <embedded name="name" class="Granah\CartShop\Product\Domain\ProductName" use-column-prefix="false" />
         <embedded name="description" class="Granah\CartShop\Product\Domain\ProductDescription" use-column-prefix="false" />
         <embedded name="price" class="Granah\CartShop\Product\Domain\ProductPrice" use-column-prefix="false" />
-        <embedded name="sellerId" class="Granah\CartShop\Shared\Domain\SellerId" use-column-prefix="false" />
+        <field name="sellerId" type="seller_id" column="sellerId"/>
     </entity>
 
 </doctrine-mapping>

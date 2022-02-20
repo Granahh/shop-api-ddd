@@ -10,6 +10,7 @@ use Behat\MinkExtension\Context\RawMinkContext;
 use Doctrine\ORM\EntityManager;
 use Granah\CartShop\Shared\Domain\SellerId;
 use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerMother;
+use Granah\CartShop\Tests\Shared\Infrastructure\Doctrine\DatabaseCleaner;
 use Granah\CartShop\Tests\Shared\Infrastructure\Mink\MinkHelper;
 use Granah\CartShop\Tests\Shared\Infrastructure\Mink\MinkSessionRequestHelper;
 use Symfony\Component\DependencyInjection\Container;
@@ -17,10 +18,12 @@ use Symfony\Component\DependencyInjection\Container;
 final class ApiRequestContext extends RawMinkContext
 {
     private MinkSessionRequestHelper $request;
+    private DatabaseCleaner $dbCleaner;
     private EntityManager $em;
-    public function __construct(Session $session, EntityManager $em)
+    public function __construct(Session $session, DatabaseCleaner $dbCleaner, EntityManager $em)
     {
         $this->request = new MinkSessionRequestHelper(new MinkHelper($session));
+        $this->dbCleaner = $dbCleaner;
         $this->em = $em;
     }
 
@@ -56,7 +59,7 @@ final class ApiRequestContext extends RawMinkContext
      */
     public function clearData()
     {
-        $this->em->createQuery('DELETE FROM Granah\CartShop\Seller\Domain\Seller')->execute();
+        $this->dbCleaner->__invoke($this->em);
     }
 
 }

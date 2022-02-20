@@ -7,8 +7,9 @@ use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Product\Domain\ProductName;
 use Granah\CartShop\Product\Domain\ProductPrice;
 use Granah\CartShop\Shared\Domain\SellerId;
+use Granah\Shared\Domain\Bus\Command\CommandHandler;
 
-class CreateProductCommandHandler
+final class CreateProductCommandHandler implements CommandHandler
 {
 
     public function __construct(private CreateProduct $creator)
