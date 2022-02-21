@@ -37,6 +37,12 @@ abstract class SellerModuleUnitTestCase extends UnitTestCase
             ->once();
     }
 
+    protected function shouldNotSave(): void
+    {
+        $this->repository()
+            ->shouldNotReceive('save');
+    }
+
     protected function repository(): SellerRepository|MockInterface
     {
         return $this->repository = $this->repository ?? $this->mock(SellerRepository::class);
