@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Granah\Apps\CartShop\Backend\Controller\Seller;
 
-use Granah\CartShop\Seller\Application\Create\CreateSellerCommand;
 use Granah\CartShop\Seller\Application\Delete\DeleteSellerCommand;
 use Granah\CartShop\Seller\Domain\SellerNotFound;
-
 use Granah\Shared\Infrastructure\ApiController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

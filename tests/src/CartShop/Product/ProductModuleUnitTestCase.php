@@ -3,6 +3,7 @@
 namespace Granah\CartShop\Tests\CartShop\Product;
 
 use Granah\CartShop\Product\Domain\Product;
+use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Product\Domain\ProductRepository;
 use Granah\CartShop\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use Mockery;
@@ -18,6 +19,23 @@ class ProductModuleUnitTestCase extends UnitTestCase
         $this->repository()
             ->shouldReceive('save')
             ->with(\Mockery::type(Product::class))
+            ->once();
+    }
+
+    protected function shouldDelete()
+    {
+        $this->repository()
+            ->shouldReceive('delete')
+            ->with(\Mockery::type(Product::class))
+            ->once();
+    }
+
+    protected function shouldSearch(?Product $product)
+    {
+        $this->repository()
+            ->shouldReceive('search')
+            ->with(\Mockery::type(ProductId::class))
+            ->andReturn($product)
             ->once();
     }
 

@@ -6,7 +6,7 @@ Concepts obtained from @CodelyTV
 
 ## Features
 - [x] Add/Delete Seller
-- [ ] Add/Delete Products to linked Seller
+- [x] Add/Delete Products to linked Seller
 - [ ] Add/Delete Products to cart
 - [ ] Get the total amount of the cart
 - [ ] Increase / Decrease the number of units of a product
