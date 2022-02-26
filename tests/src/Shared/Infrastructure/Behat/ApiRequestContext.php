@@ -8,7 +8,9 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Doctrine\ORM\EntityManager;
+use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Shared\Domain\SellerId;
+use Granah\CartShop\Tests\CartShop\Product\Domain\ProductMother;
 use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerMother;
 use Granah\CartShop\Tests\Shared\Infrastructure\Doctrine\DatabaseCleaner;
 use Granah\CartShop\Tests\Shared\Infrastructure\Mink\MinkHelper;
@@ -46,11 +48,23 @@ final class ApiRequestContext extends RawMinkContext
     /**
      * @Given I create a valid seller with id :id
      */
-    public function iCreateAValidSeller($id): void
+    public function iCreateAValidSeller(string $id): void
     {
         $sellerId = new SellerId($id);
         $seller = SellerMother::create($sellerId);
         $this->em->persist($seller);
+        $this->em->flush();
+    }
+
+    /**
+     * @Given I create a valid product with id :id and sellerId :sellerId
+     */
+    public function iCreateAValidProduct(string $id,string $sellerId): void
+    {
+        $productId = new ProductId($id);
+        $sellerId = new SellerId($sellerId);
+        $product = ProductMother::create($productId,null,null,null,$sellerId);
+        $this->em->persist($product);
         $this->em->flush();
     }
 

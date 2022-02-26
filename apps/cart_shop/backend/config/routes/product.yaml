@@ -3,3 +3,9 @@ product_put:
     controller: Granah\Apps\CartShop\Backend\Controller\Product\ProductPutController
     methods: [PUT]
 
+product_delete:
+    path: /product/{id}
+    controller: Granah\Apps\CartShop\Backend\Controller\Product\ProductDeleteController
+    methods: [DELETE]
+
+
