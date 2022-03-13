@@ -28,3 +28,4 @@ RUN docker-php-ext-enable \
 RUN curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 COPY etc/infrastructure/php/ /usr/local/etc/php/
+
