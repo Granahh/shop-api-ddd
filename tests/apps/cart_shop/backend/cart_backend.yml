@@ -26,6 +26,11 @@ cart_backend:
       contexts:
         - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiRequestContext
         - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiResponseContext
+    cart:
+      paths: [ tests/apps/cart_shop/backend/features/cart ]
+      contexts:
+        - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiRequestContext
+        - Granah\CartShop\Tests\Shared\Infrastructure\Behat\ApiResponseContext
 
 
 

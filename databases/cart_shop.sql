@@ -18,5 +18,6 @@ CREATE TABLE `cart` (
                            `id` CHAR(36) NOT NULL,
                            `productId` CHAR(36) NOT NULL,
                            `qt` int NOT NULL,
+                           `confirmed` BOOLEAN NOT NULL,
                            PRIMARY KEY (`id`, `productId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
