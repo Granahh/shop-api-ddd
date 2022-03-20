@@ -7,13 +7,13 @@ Concepts obtained from @CodelyTV
 ## Features
 - [x] Add/Delete Seller
 - [x] Add/Delete Products to linked Seller
-- [ ] Add/Delete Products to cart
-- [ ] Get the total amount of the cart
-- [ ] Increase / Decrease the number of units of a product
-- [ ] Remove a product from cart
-- [ ] Delete the entire cart
+- [x] Add/Delete Products to cart
+- [x] Get the total amount of the cart
+- [x] Increase / Decrease the number of units of a product
+- [x] Remove a product from cart
+- [x] Delete the entire cart
 - [ ] Confirm Cart
-- [ ] Add Testing 
+- [x] Add Testing 
 - [ ] Add Domain Events 
 
 ## Thanks for reading
