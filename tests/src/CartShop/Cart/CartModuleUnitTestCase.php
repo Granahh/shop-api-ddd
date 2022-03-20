@@ -29,7 +29,7 @@ class CartModuleUnitTestCase extends UnitTestCase
     {
         $this->repository()
             ->shouldReceive('delete')
-            ->with(\Mockery::type(Cart::class))
+            ->with(\Mockery::type(CartId::class))
             ->once();
     }
 

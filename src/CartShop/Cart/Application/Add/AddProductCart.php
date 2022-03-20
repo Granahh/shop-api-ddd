@@ -18,6 +18,11 @@ final class AddProductCart
     public function __invoke(CartId $id, ProductId $productId, CartQuantity $quantity, CartConfirmed $confirmed): void
     {
         $cart = Cart::Create($id, $productId, $quantity, $confirmed);
+
+        if ($cart->quantity()->value() <= 0) {
+            $this->repository->deleteProductCart($cart);
+            return;
+        }
         $this->repository->save($cart);
     }
 

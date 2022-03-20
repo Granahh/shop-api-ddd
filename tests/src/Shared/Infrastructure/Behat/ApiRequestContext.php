@@ -8,10 +8,14 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Doctrine\ORM\EntityManager;
+use Granah\CartShop\Cart\Domain\CartId;
 use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Shared\Domain\SellerId;
+use Granah\CartShop\Tests\CartShop\Cart\Domain\CartMother;
+use Granah\CartShop\Tests\CartShop\Product\Domain\ProductIdMother;
 use Granah\CartShop\Tests\CartShop\Product\Domain\ProductMother;
 use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerMother;
+use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 use Granah\CartShop\Tests\Shared\Infrastructure\Doctrine\DatabaseCleaner;
 use Granah\CartShop\Tests\Shared\Infrastructure\Mink\MinkHelper;
 use Granah\CartShop\Tests\Shared\Infrastructure\Mink\MinkSessionRequestHelper;
@@ -65,6 +69,16 @@ final class ApiRequestContext extends RawMinkContext
         $sellerId = new SellerId($sellerId);
         $product = ProductMother::create($productId,null,null,null,$sellerId);
         $this->em->persist($product);
+        $this->em->flush();
+    }
+
+    /**
+     * @Given I create a valid product cart with id :id
+     */
+    public function iCreateAValidProductCart(string $id): void
+    {
+        $cart = CartMother::create(new CartId($id));
+        $this->em->persist($cart);
         $this->em->flush();
     }
 

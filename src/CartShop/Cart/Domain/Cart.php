@@ -5,7 +5,7 @@ namespace Granah\CartShop\Cart\Domain;
 use Granah\CartShop\Product\Domain\ProductId;
 use Granah\Shared\Domain\Aggregate\AggregateRoot;
 
-final class Cart extends AggregateRoot
+class Cart extends AggregateRoot
 {
     public function __construct(private CartId $cartId, private ProductId $productId, private CartQuantity $quantity, private CartConfirmed $confirmed)
     {

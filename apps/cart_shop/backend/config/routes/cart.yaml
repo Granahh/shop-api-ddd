@@ -2,3 +2,8 @@ cart_put:
   path: /cart/{id}
   controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartPutController
   methods: [PUT]
+
+cart_delete:
+  path: /cart/{id}
+  controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartDeleteController
+  methods: [DELETE]

@@ -12,4 +12,9 @@ final class CartConfirmed
     {
         return $this->value;
     }
+
+    public function transformToInt(): int
+    {
+        return $this->value ? 1 : 0;
+    }
 }
