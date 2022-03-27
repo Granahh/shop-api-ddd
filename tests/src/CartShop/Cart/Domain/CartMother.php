@@ -6,7 +6,7 @@ use Granah\CartShop\Cart\Domain\Cart;
 use Granah\CartShop\Cart\Domain\CartConfirmed;
 use Granah\CartShop\Cart\Domain\CartId;
 use Granah\CartShop\Cart\Domain\CartQuantity;
-use Granah\CartShop\Product\Domain\ProductId;
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\CartShop\Tests\CartShop\Product\Domain\ProductIdMother;
 
 final class CartMother

@@ -2,7 +2,7 @@
 
 namespace Granah\CartShop\Product\Application\Delete;
 
-use Granah\CartShop\Product\Domain\ProductId;
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\Shared\Domain\Bus\Command\CommandHandler;
 
 final class DeleteProductCommandHandler implements CommandHandler

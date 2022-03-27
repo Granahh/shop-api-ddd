@@ -6,8 +6,7 @@ Feature: Add product to cart
     """
     {
       "productId": "6be99081-21c7-46fe-9053-b4b56c24c188",
-      "qt": 1,
-      "confirmed": false
+      "qt": 1
     }
     """
     Then the response status code should be 201

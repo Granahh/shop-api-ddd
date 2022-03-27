@@ -2,6 +2,7 @@
 
 namespace Granah\CartShop\Product\Domain;
 
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\CartShop\Shared\Domain\SellerId;
 use Granah\Shared\Domain\Aggregate\AggregateRoot;
 

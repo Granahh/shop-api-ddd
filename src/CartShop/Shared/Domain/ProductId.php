@@ -1,6 +1,6 @@
 <?php
 
-namespace Granah\CartShop\Product\Domain;
+namespace Granah\CartShop\Shared\Domain;
 
 use Granah\Shared\Domain\ValueObject\Uuid;
 

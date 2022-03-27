@@ -2,6 +2,8 @@
 
 namespace Granah\CartShop\Product\Domain;
 
+use Granah\CartShop\Shared\Domain\ProductId;
+
 interface ProductRepository
 {
     public function save(Product $product): void;

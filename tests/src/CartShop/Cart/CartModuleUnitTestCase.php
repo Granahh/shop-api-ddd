@@ -6,8 +6,6 @@ use Granah\CartShop\Cart\Domain\Cart;
 use Granah\CartShop\Cart\Domain\CartId;
 use Granah\CartShop\Cart\Domain\CartRepository;
 use Granah\CartShop\Cart\Domain\ProductsCart;
-use Granah\CartShop\Product\Domain\Product;
-use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Product\Domain\ProductRepository;
 use Granah\CartShop\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use Mockery;

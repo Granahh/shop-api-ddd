@@ -2,9 +2,9 @@
 
 namespace Granah\CartShop\Product\Application\Delete;
 
-use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Product\Domain\ProductNotFound;
 use Granah\CartShop\Product\Domain\ProductRepository;
+use Granah\CartShop\Shared\Domain\ProductId;
 
 final class DeleteProduct
 {

@@ -2,7 +2,7 @@
 
 namespace Granah\CartShop\Tests\CartShop\Product\Domain;
 
-use Granah\CartShop\Product\Domain\ProductId;
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\CartShop\Tests\Shared\Domain\UuidMother;
 
 final class ProductIdMother

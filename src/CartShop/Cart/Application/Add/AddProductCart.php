@@ -7,7 +7,7 @@ use Granah\CartShop\Cart\Domain\CartConfirmed;
 use Granah\CartShop\Cart\Domain\CartId;
 use Granah\CartShop\Cart\Domain\CartQuantity;
 use Granah\CartShop\Cart\Domain\CartRepository;
-use Granah\CartShop\Product\Domain\ProductId;
+use Granah\CartShop\Shared\Domain\ProductId;
 
 final class AddProductCart
 {
@@ -15,9 +15,9 @@ final class AddProductCart
     {
     }
 
-    public function __invoke(CartId $id, ProductId $productId, CartQuantity $quantity, CartConfirmed $confirmed): void
+    public function __invoke(CartId $id, ProductId $productId, CartQuantity $quantity): void
     {
-        $cart = Cart::Create($id, $productId, $quantity, $confirmed);
+        $cart = Cart::Create($id, $productId, $quantity, new CartConfirmed(false));
 
         if ($cart->quantity()->value() <= 0) {
             $this->repository->deleteProductCart($cart);

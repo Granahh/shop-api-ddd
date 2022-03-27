@@ -8,7 +8,7 @@ use Granah\CartShop\Cart\Domain\CartId;
 use Granah\CartShop\Cart\Domain\CartQuantity;
 use Granah\CartShop\Cart\Domain\CartRepository;
 use Granah\CartShop\Cart\Domain\ProductsCart;
-use Granah\CartShop\Product\Domain\ProductId;
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\Shared\Infrastructure\Persistence\DoctrineRepository;
 use function Lambdish\Phunctional\map;
 

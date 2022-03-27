@@ -2,7 +2,7 @@
 
 namespace Granah\CartShop\Cart\Domain;
 
-use Granah\CartShop\Product\Domain\ProductId;
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\Shared\Domain\Aggregate\AggregateRoot;
 
 class Cart extends AggregateRoot

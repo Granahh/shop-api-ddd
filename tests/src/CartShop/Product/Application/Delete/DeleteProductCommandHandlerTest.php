@@ -5,8 +5,8 @@ namespace Granah\CartShop\Tests\CartShop\Product\Application\Delete;
 
 use Granah\CartShop\Product\Application\Delete\DeleteProduct;
 use Granah\CartShop\Product\Application\Delete\DeleteProductCommandHandler;
-use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Product\Domain\ProductNotFound;
+use Granah\CartShop\Shared\Domain\ProductId;
 use Granah\CartShop\Tests\CartShop\Product\Domain\ProductMother;
 use Granah\CartShop\Tests\CartShop\Product\ProductModuleUnitTestCase;
 

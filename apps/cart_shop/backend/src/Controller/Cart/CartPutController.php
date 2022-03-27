@@ -16,8 +16,7 @@ final class CartPutController extends ApiController
         $command = new AddProductCartCommand(
             $id,
             $request->get('productId'),
-            $request->get('qt'),
-            false
+            $request->get('qt')
         );
 
         $this->dispatch($command);

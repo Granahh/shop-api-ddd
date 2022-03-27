@@ -7,7 +7,7 @@ use Granah\Shared\Domain\Bus\Command\Command;
 final class AddProductCartCommand implements Command
 {
 
-    public function __construct(private string $id, private string $productId, private int $quantity, private bool $confirmed)
+    public function __construct(private string $id, private string $productId, private int $quantity)
     {
     }
 
@@ -25,10 +25,4 @@ final class AddProductCartCommand implements Command
     {
         return $this->quantity;
     }
-
-    public function confirmed(): bool
-    {
-        return $this->confirmed;
-    }
-
 }
