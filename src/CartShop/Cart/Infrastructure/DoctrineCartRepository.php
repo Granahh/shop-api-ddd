@@ -95,4 +95,19 @@ SQL;
             ]
         );
     }
+
+    public function confirm(CartId $id): void
+    {
+        $sql = <<<SQL
+            UPDATE cart SET confirmed = 1 WHERE id = :id     
+SQL;
+        $stmp = $this->getEntityManager()->getConnection()->prepare($sql);
+
+        $stmp->executeStatement(
+            [
+                'id' => $id->value(),
+            ]
+        );
+    }
+
 }

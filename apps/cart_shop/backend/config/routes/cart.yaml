@@ -12,3 +12,8 @@ cart_GET:
   path: /cart/{id}
   controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartGetController
   methods: [ GET ]
+
+cart_put_confirm:
+  path: /cart/{id}/confirm
+  controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartPutConfirmController
+  methods: [PUT]

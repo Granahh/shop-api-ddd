@@ -1,10 +1,10 @@
 <?php
 
-namespace Granah\CartShop\Cart\Application\Get;
+namespace Granah\CartShop\Cart\Application\Confirm;
 
-use Granah\Shared\Domain\Bus\Query\Query;
+use Granah\Shared\Domain\Bus\Command\Command;
 
-final class GetCartQuery implements Query
+final class ConfirmCartCommand implements Command
 {
     public function __construct(private string $cartId)
     {

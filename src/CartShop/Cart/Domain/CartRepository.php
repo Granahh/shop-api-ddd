@@ -8,4 +8,5 @@ interface CartRepository
     public function save(Cart $cart): void;
     public function get(CartId $cartId): ProductsCart;
     public function deleteProductCart(Cart $cart): void;
+    public function confirm(CartId $id);
 }

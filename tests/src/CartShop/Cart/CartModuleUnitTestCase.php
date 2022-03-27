@@ -41,6 +41,14 @@ class CartModuleUnitTestCase extends UnitTestCase
             ->once();
     }
 
+    protected function shouldConfirm()
+    {
+        $this->repository()
+            ->shouldReceive('confirm')
+            ->with(\Mockery::type(CartId::class))
+            ->once();
+    }
+
     protected function repository(): CartRepository|MockInterface
     {
         return $this->repository = $this->repository ?? Mockery::mock(CartRepository::class);

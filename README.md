@@ -12,7 +12,7 @@ Concepts obtained from @CodelyTV
 - [x] Increase / Decrease the number of units of a product
 - [x] Remove a product from cart
 - [x] Delete the entire cart
-- [ ] Confirm Cart
+- [x] Confirm Cart
 - [x] Add Testing 
 - [ ] Add Domain Events 
 
