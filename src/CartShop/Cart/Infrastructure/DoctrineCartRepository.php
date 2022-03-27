@@ -3,10 +3,17 @@
 namespace Granah\CartShop\Cart\Infrastructure;
 
 use Granah\CartShop\Cart\Domain\Cart;
+use Granah\CartShop\Cart\Domain\CartConfirmed;
 use Granah\CartShop\Cart\Domain\CartId;
+use Granah\CartShop\Cart\Domain\CartQuantity;
 use Granah\CartShop\Cart\Domain\CartRepository;
+use Granah\CartShop\Cart\Domain\ProductsCart;
 use Granah\CartShop\Product\Domain\ProductId;
+use Granah\Shared\Domain\Boolean;
+use Granah\Shared\Domain\Quantity;
 use Granah\Shared\Infrastructure\Persistence\DoctrineRepository;
+use function Lambdish\Phunctional\map;
+
 
 final class DoctrineCartRepository extends DoctrineRepository implements CartRepository
 {
@@ -36,9 +43,35 @@ SQL;
         $this->remove($cart);
     }
 
-    public function get(CartId $cartId): array
+    public function get(CartId $cartId): ProductsCart
     {
-        return $this->repository(Cart::class)->find($cartId);
+
+        $productsCart = new ProductsCart([]);
+        $sql = <<<SQL
+            SELECT id, productId, qt, confirmed FROM cart where id = :id          
+SQL;
+        $stmp = $this->getEntityManager()->getConnection()->prepare($sql);
+        $stmp->bindValue('id', $cartId->value());
+        $stmp->execute();
+        $result = $stmp->fetchAllAssociative();
+
+        if (!empty($result)) {
+            map(
+                function ($cart) use ($productsCart) {
+                    $productsCart->add(
+                        Cart::Create(
+                            new CartId($cart['id']),
+                            new ProductId($cart['productId']),
+                            new CartQuantity($cart['qt']),
+                            new CartConfirmed(false)
+                        )
+                    );
+                },
+                $result
+            );
+        }
+
+        return $productsCart;
     }
 
 

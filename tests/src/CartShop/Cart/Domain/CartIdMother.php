@@ -7,7 +7,7 @@ use Granah\CartShop\Tests\Shared\Domain\UuidMother;
 
 final class CartIdMother
 {
-    public static function create($value = null): CartId
+    public static function create(string $value = null): CartId
     {
         return new CartId($value ?? UuidMother::create());
     }

@@ -32,7 +32,7 @@ final class FindSellerQueryHandlerTest extends SellerModuleUnitTestCase
                 new SellerId('deb3863c-e988-3ac4-bb74-bf150c51787c')
             ));
 
-        $findSellerReponseExpect = FindSellerReponse::from(SellerMother::create(new SellerId('deb3863c-e988-3ac4-bb74-bf150c51787c')));
+        $findSellerReponseExpect = FindSellerReponse::build(SellerMother::create(new SellerId('deb3863c-e988-3ac4-bb74-bf150c51787c')));
         $this->assertAskResponse($findSellerReponseExpect, $query, $this->handler);
     }
 

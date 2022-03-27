@@ -5,6 +5,7 @@ namespace Granah\CartShop\Tests\CartShop\Cart;
 use Granah\CartShop\Cart\Domain\Cart;
 use Granah\CartShop\Cart\Domain\CartId;
 use Granah\CartShop\Cart\Domain\CartRepository;
+use Granah\CartShop\Cart\Domain\ProductsCart;
 use Granah\CartShop\Product\Domain\Product;
 use Granah\CartShop\Product\Domain\ProductId;
 use Granah\CartShop\Product\Domain\ProductRepository;
@@ -33,12 +34,12 @@ class CartModuleUnitTestCase extends UnitTestCase
             ->once();
     }
 
-    protected function shouldSearch(?Product $product)
+    protected function shouldSearch(ProductsCart $productsCart)
     {
         $this->repository()
-            ->shouldReceive('search')
+            ->shouldReceive('get')
             ->with(\Mockery::type(CartId::class))
-            ->andReturn($product)
+            ->andReturn($productsCart)
             ->once();
     }
 

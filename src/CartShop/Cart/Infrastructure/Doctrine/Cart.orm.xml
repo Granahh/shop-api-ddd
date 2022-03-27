@@ -7,7 +7,7 @@
     <entity name="Granah\CartShop\Cart\Domain\Cart" table="cart">
 
         <id name="cartId" type="cart_id" column="id" length="36" />
-        <field name="productId" type="product_id" column="productId" unique="true" />
+        <id name="productId" type="product_id" column="productId" length="36" />
         <embedded name="quantity" class="Granah\CartShop\Cart\Domain\CartQuantity" use-column-prefix="false" />
         <embedded name="confirmed" class="Granah\CartShop\Cart\Domain\CartConfirmed" use-column-prefix="false" />
     </entity>

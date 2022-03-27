@@ -12,7 +12,7 @@ final class FindSellerReponse implements Response
     {
     }
 
-    public static function from(Seller $seller): self
+    public static function build(Seller $seller): self
     {
         return new self($seller->id()->value());
     }
@@ -20,5 +20,12 @@ final class FindSellerReponse implements Response
     public function id(): string
     {
         return $this->id;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id(),
+        ];
     }
 }

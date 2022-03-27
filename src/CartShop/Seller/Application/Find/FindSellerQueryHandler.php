@@ -16,7 +16,7 @@ final class FindSellerQueryHandler implements QueryHandler
 
     public function __invoke(FindSellerQuery $query): FindSellerReponse
     {
-        return FindSellerReponse::from($this->find->__invoke(new SellerId($query->id())));
+        return FindSellerReponse::build($this->find->__invoke(new SellerId($query->id())));
     }
 
 }

@@ -7,3 +7,8 @@ cart_delete:
   path: /cart/{id}
   controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartDeleteController
   methods: [DELETE]
+
+cart_GET:
+  path: /cart/{id}
+  controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartGetController
+  methods: [ GET ]
