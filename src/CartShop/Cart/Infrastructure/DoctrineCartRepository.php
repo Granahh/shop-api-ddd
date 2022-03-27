@@ -9,8 +9,6 @@ use Granah\CartShop\Cart\Domain\CartQuantity;
 use Granah\CartShop\Cart\Domain\CartRepository;
 use Granah\CartShop\Cart\Domain\ProductsCart;
 use Granah\CartShop\Product\Domain\ProductId;
-use Granah\Shared\Domain\Boolean;
-use Granah\Shared\Domain\Quantity;
 use Granah\Shared\Infrastructure\Persistence\DoctrineRepository;
 use function Lambdish\Phunctional\map;
 
@@ -39,8 +37,16 @@ SQL;
 
     public function delete(CartId $id): void
     {
-        $cart = $this->getEntityManager()->getReference(Cart::class, $id);
-        $this->remove($cart);
+        $sql = <<<SQL
+            DELETE FROM cart WHERE id = :id            
+SQL;
+        $stmp = $this->getEntityManager()->getConnection()->prepare($sql);
+
+        $stmp->executeStatement(
+            [
+                'id' => $id->value()
+            ]
+        );
     }
 
     public function get(CartId $cartId): ProductsCart
