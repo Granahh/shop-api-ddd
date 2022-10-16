@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Granah\CartShop\Tests\Shared\Infrastructure\Behat;
 
@@ -17,7 +17,7 @@ final class ApiResponseContext extends RawMinkContext
 
     public function __construct(Session $minkSession)
     {
-        $this->minkSession   = $minkSession;
+        $this->minkSession = $minkSession;
         $this->sessionHelper = new MinkHelper($this->minkSession);
     }
 
@@ -27,13 +27,18 @@ final class ApiResponseContext extends RawMinkContext
     public function theResponseContentShouldBe(PyStringNode $expectedResponse): void
     {
         $expected = $this->sanitizeOutput($expectedResponse->getRaw());
-        $actual   = $this->sanitizeOutput($this->sessionHelper->getResponse());
+        $actual = $this->sanitizeOutput($this->sessionHelper->getResponse());
 
         if ($expected !== $actual) {
             throw new RuntimeException(
                 sprintf("The outputs does not match!\n\n-- Expected:\n%s\n\n-- Actual:\n%s", $expected, $actual)
             );
         }
+    }
+
+    private function sanitizeOutput(string $output)
+    {
+        return json_encode(json_decode(trim($output), true));
     }
 
     /**
@@ -71,7 +76,7 @@ final class ApiResponseContext extends RawMinkContext
      */
     public function theResponseStatusCodeShouldBe($expectedResponseCode): void
     {
-        if ($this->minkSession->getStatusCode() !== (int) $expectedResponseCode) {
+        if ($this->minkSession->getStatusCode() !== (int)$expectedResponseCode) {
             throw new RuntimeException(
                 sprintf(
                     'The status code <%s> does not match the expected <%s>',
@@ -80,10 +85,5 @@ final class ApiResponseContext extends RawMinkContext
                 )
             );
         }
-    }
-
-    private function sanitizeOutput(string $output)
-    {
-        return json_encode(json_decode(trim($output), true));
     }
 }

@@ -1,12 +1,12 @@
 cart_put:
   path: /cart/{id}
   controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartPutController
-  methods: [PUT]
+  methods: [ PUT ]
 
 cart_delete:
   path: /cart/{id}
   controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartDeleteController
-  methods: [DELETE]
+  methods: [ DELETE ]
 
 cart_GET:
   path: /cart/{id}
@@ -16,4 +16,4 @@ cart_GET:
 cart_put_confirm:
   path: /cart/{id}/confirm
   controller: Granah\Apps\CartShop\Backend\Controller\Cart\CartPutConfirmController
-  methods: [PUT]
+  methods: [ PUT ]

@@ -1,6 +1,7 @@
 <?php
 
 namespace Granah\Shared\Infrastructure\Doctrine\Dbal;
+
 use Doctrine\DBAL\Types\Type;
 use function Lambdish\Phunctional\each;
 

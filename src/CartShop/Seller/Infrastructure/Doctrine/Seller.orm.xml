@@ -5,10 +5,10 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Granah\CartShop\Seller\Domain\Seller" table="seller">
-        <id name="id" type="seller_id" column="id" length="36" />
+        <id name="id" type="seller_id" column="id" length="36"/>
 
-        <embedded name="name" class="Granah\CartShop\Seller\Domain\SellerName" use-column-prefix="false" />
-        <embedded name="email" class="Granah\CartShop\Seller\Domain\SellerEmail" use-column-prefix="false" />
+        <embedded name="name" class="Granah\CartShop\Seller\Domain\SellerName" use-column-prefix="false"/>
+        <embedded name="email" class="Granah\CartShop\Seller\Domain\SellerEmail" use-column-prefix="false"/>
     </entity>
 
 </doctrine-mapping>

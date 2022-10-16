@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Granah\Shared\Infrastructure;
 
 use Granah\Shared\Domain\Bus\Command\Command;
@@ -15,10 +16,11 @@ abstract class ApiController
 
 
     public function __construct(
-        private QueryBus $queryBus,
-        private CommandBus $commandBus,
+        private QueryBus                   $queryBus,
+        private CommandBus                 $commandBus,
         ApiExceptionsHttpStatusCodeMapping $exceptionHandler
-    ) {
+    )
+    {
         foreach ($this->exceptions() as $exceptionClass => $httpStatusCode) {
             $exceptionHandler->register($exceptionClass, $httpStatusCode);
         }

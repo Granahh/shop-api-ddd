@@ -3,7 +3,6 @@
 namespace Granah\CartShop\Cart\Infrastructure\Doctrine;
 
 use Granah\CartShop\Cart\Domain\CartId;
-
 use Granah\Shared\Infrastructure\Doctrine\Dbal\DoctrineCustomType;
 use Granah\Shared\Infrastructure\Persistence\UuidType;
 

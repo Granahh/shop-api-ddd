@@ -14,18 +14,17 @@ use Mockery\MockInterface;
 
 class UnitTestCase extends MockeryTestCase
 {
-    private EventBus|MockInterface|null      $eventBus;
+    private EventBus|MockInterface|null $eventBus;
     private UuidGenerator|MockInterface|null $uuidGenerator;
-
-    protected function mock(string $className): MockInterface
-    {
-        return Mockery::mock($className);
-    }
-
 
     protected function eventBus(): EventBus|MockInterface
     {
         return $this->eventBus = $this->eventBus ?? $this->mock(EventBus::class);
+    }
+
+    protected function mock(string $className): MockInterface
+    {
+        return Mockery::mock($className);
     }
 
     protected function shouldGenerateUuid(string $uuid): void

@@ -5,7 +5,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <embeddable name="Granah\CartShop\Cart\Domain\CartConfirmed">
-        <field name="value"  column="confirmed" />
+        <field name="value" column="confirmed"/>
     </embeddable>
 
 

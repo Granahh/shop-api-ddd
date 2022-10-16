@@ -30,7 +30,8 @@ final class CreateProductCommand implements Command
         return $this->price;
     }
 
-    public function sellerId(): string {
+    public function sellerId(): string
+    {
         return $this->sellerId;
     }
 }

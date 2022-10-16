@@ -12,8 +12,9 @@ final class AddProductCartCommandMother
     public static function create(
         string $id = null,
         string $productId = null,
-        int $quantity = null
-    ): AddProductCartCommand {
+        int    $quantity = null
+    ): AddProductCartCommand
+    {
         return new AddProductCartCommand(
             CartIdMother::create($id)->value(),
             ProductIdMother::create($productId)->value(),

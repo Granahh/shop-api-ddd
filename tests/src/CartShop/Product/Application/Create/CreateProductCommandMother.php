@@ -9,7 +9,8 @@ use Granah\CartShop\Tests\CartShop\Product\Domain\ProductNameMother;
 use Granah\CartShop\Tests\CartShop\Product\Domain\ProductPriceMother;
 use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 
-final class CreateProductCommandMother {
+final class CreateProductCommandMother
+{
 
     public static function create(): CreateProductCommand
     {

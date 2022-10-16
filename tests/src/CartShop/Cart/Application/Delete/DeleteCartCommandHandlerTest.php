@@ -10,13 +10,6 @@ final class DeleteCartCommandHandlerTest extends CartModuleUnitTestCase
 {
     private DeleteCartCommandHandler|null $handler;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->handler = new DeleteCartCommandHandler(new DeleteCart($this->repository()));
-    }
-
     /**
      * @test
      */
@@ -24,7 +17,14 @@ final class DeleteCartCommandHandlerTest extends CartModuleUnitTestCase
     {
         $command = DeleteCartCommandMother::create();
         $this->shouldDelete();
-        $this->dispatch($command,$this->handler);
+        $this->dispatch($command, $this->handler);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->handler = new DeleteCartCommandHandler(new DeleteCart($this->repository()));
     }
 
 }

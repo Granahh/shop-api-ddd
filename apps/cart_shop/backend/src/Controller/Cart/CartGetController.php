@@ -2,8 +2,6 @@
 
 namespace Granah\Apps\CartShop\Backend\Controller\Cart;
 
-use Granah\CartShop\Cart\Application\Add\AddProductCartCommand;
-use Granah\CartShop\Cart\Application\Delete\DeleteCartCommand;
 use Granah\CartShop\Cart\Application\Get\GetCartQuery;
 use Granah\Shared\Infrastructure\ApiController;
 use Symfony\Component\HttpFoundation\JsonResponse;

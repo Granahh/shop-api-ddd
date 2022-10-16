@@ -12,12 +12,17 @@ abstract class SellerModuleUnitTestCase extends UnitTestCase
 {
     private SellerRepository|MockInterface|null $repository;
 
-    protected function shouldSave():void
+    protected function shouldSave(): void
     {
         $this->repository()
             ->shouldReceive('save')
             ->with(\Mockery::type(Seller::class))
             ->once();
+    }
+
+    protected function repository(): SellerRepository|MockInterface
+    {
+        return $this->repository = $this->repository ?? $this->mock(SellerRepository::class);
     }
 
     protected function shouldSearch(?Seller $seller): void
@@ -41,10 +46,5 @@ abstract class SellerModuleUnitTestCase extends UnitTestCase
     {
         $this->repository()
             ->shouldNotReceive('save');
-    }
-
-    protected function repository(): SellerRepository|MockInterface
-    {
-        return $this->repository = $this->repository ?? $this->mock(SellerRepository::class);
     }
 }

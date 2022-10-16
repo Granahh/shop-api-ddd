@@ -6,15 +6,15 @@ services:
   #configure
   _instanceof:
     Granah\Shared\Domain\Bus\Command\CommandHandler:
-      tags: [granah.command_handler]
+      tags: [ granah.command_handler ]
     Granah\Shared\Domain\Bus\Query\QueryHandler:
-      tags: [granah.query_handler]
+      tags: [ granah.query_handler ]
     Granah\Shared\Domain\Bus\Event\DomainEventSubscriber:
       tags: [ 'granah.domain_event_subscriber' ]
 
   Granah\Apps\CartShop\Backend\Controller\:
     resource: '../src/Controller'
-    tags: ['controller.service_arguments']
+    tags: [ 'controller.service_arguments' ]
 
   Granah\:
     resource: '../../../../src'

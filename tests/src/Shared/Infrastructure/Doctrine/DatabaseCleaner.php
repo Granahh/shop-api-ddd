@@ -13,10 +13,15 @@ final class DatabaseCleaner
     {
         $connection = $entityManager->getConnection();
 
-        $tables            = $this->tables($connection);
+        $tables = $this->tables($connection);
         $truncateTablesSql = $this->truncateDatabaseSql($tables);
 
         $connection->exec($truncateTablesSql);
+    }
+
+    private function tables(Connection $connection): array
+    {
+        return $connection->query('SHOW TABLES')->fetchAll();
     }
 
     private function truncateDatabaseSql(array $tables): string
@@ -31,10 +36,5 @@ final class DatabaseCleaner
         return function (array $table): string {
             return sprintf('TRUNCATE TABLE `%s`;', first($table));
         };
-    }
-
-    private function tables(Connection $connection): array
-    {
-        return $connection->query('SHOW TABLES')->fetchAll();
     }
 }

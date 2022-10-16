@@ -23,7 +23,7 @@ final class GetCartResponse implements Response
             $products[$cart->productId()->value()]['qt'] = $cart->quantity()->value();
         }
 
-        return new self($cartId,$products);
+        return new self($cartId, $products);
     }
 
     public function toArray(): array

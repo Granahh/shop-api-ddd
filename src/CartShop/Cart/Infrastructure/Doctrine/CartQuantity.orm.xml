@@ -5,7 +5,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <embeddable name="Granah\CartShop\Cart\Domain\CartQuantity">
-        <field name="value"  column="qt" />
+        <field name="value" column="qt"/>
     </embeddable>
 
 

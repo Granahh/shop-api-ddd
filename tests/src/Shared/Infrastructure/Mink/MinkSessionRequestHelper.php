@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Granah\CartShop\Tests\Shared\Infrastructure\Mink;
 
@@ -18,13 +18,13 @@ final class MinkSessionRequestHelper
         $this->request($method, $url, $optionalParams);
     }
 
-    public function sendRequestWithPyStringNode($method, $url, PyStringNode $body): void
-    {
-        $this->request($method, $url, ['content' => $body->getRaw()]);
-    }
-
     public function request($method, $url, array $optionalParams = []): Crawler
     {
         return $this->sessionHelper->sendRequest($method, $url, $optionalParams);
+    }
+
+    public function sendRequestWithPyStringNode($method, $url, PyStringNode $body): void
+    {
+        $this->request($method, $url, ['content' => $body->getRaw()]);
     }
 }

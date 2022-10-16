@@ -13,7 +13,7 @@ class Cart extends AggregateRoot
 
     public static function Create(CartId $cartId, ProductId $productId, CartQuantity $quantity, CartConfirmed $confirmed): self
     {
-        return new self($cartId, $productId, $quantity,$confirmed);
+        return new self($cartId, $productId, $quantity, $confirmed);
     }
 
     public function cartId(): CartId

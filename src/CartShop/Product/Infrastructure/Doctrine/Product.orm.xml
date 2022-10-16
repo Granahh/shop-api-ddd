@@ -5,11 +5,12 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Granah\CartShop\Product\Domain\Product" table="product">
-        <id name="id" type="product_id" column="id" length="36" />
+        <id name="id" type="product_id" column="id" length="36"/>
 
-        <embedded name="name" class="Granah\CartShop\Product\Domain\ProductName" use-column-prefix="false" />
-        <embedded name="description" class="Granah\CartShop\Product\Domain\ProductDescription" use-column-prefix="false" />
-        <embedded name="price" class="Granah\CartShop\Product\Domain\ProductPrice" use-column-prefix="false" />
+        <embedded name="name" class="Granah\CartShop\Product\Domain\ProductName" use-column-prefix="false"/>
+        <embedded name="description" class="Granah\CartShop\Product\Domain\ProductDescription"
+                  use-column-prefix="false"/>
+        <embedded name="price" class="Granah\CartShop\Product\Domain\ProductPrice" use-column-prefix="false"/>
         <field name="sellerId" type="seller_id" column="sellerId"/>
     </entity>
 

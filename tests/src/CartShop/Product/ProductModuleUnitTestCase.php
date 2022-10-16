@@ -22,6 +22,11 @@ class ProductModuleUnitTestCase extends UnitTestCase
             ->once();
     }
 
+    protected function repository(): ProductRepository|MockInterface
+    {
+        return $this->repository = $this->repository ?? Mockery::mock(ProductRepository::class);
+    }
+
     protected function shouldDelete()
     {
         $this->repository()
@@ -37,10 +42,5 @@ class ProductModuleUnitTestCase extends UnitTestCase
             ->with(\Mockery::type(ProductId::class))
             ->andReturn($product)
             ->once();
-    }
-
-    protected function repository(): ProductRepository|MockInterface
-    {
-        return $this->repository = $this->repository ?? Mockery::mock(ProductRepository::class);
     }
 }

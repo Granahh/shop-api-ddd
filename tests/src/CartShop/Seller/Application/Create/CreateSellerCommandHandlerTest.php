@@ -5,21 +5,13 @@ namespace Granah\CartShop\Tests\CartShop\Seller\Application\Create;
 use Granah\CartShop\Seller\Application\Create\CreateSeller;
 use Granah\CartShop\Seller\Application\Create\CreateSellerCommandHandler;
 use Granah\CartShop\Seller\Domain\SellerAlreadyExists;
-use Granah\CartShop\Shared\Domain\SellerId;
 use Granah\CartShop\Tests\CartShop\Seller\Domain\SellerMother;
 use Granah\CartShop\Tests\CartShop\Seller\SellerModuleUnitTestCase;
-use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 
 
 final class CreateSellerCommandHandlerTest extends SellerModuleUnitTestCase
 {
     private CreateSellerCommandHandler|null $handler;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->handler = new CreateSellerCommandHandler(new CreateSeller($this->repository()));
-    }
 
     /**
      * @test
@@ -44,6 +36,11 @@ final class CreateSellerCommandHandlerTest extends SellerModuleUnitTestCase
         $this->dispatch($command, $this->handler);
     }
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->handler = new CreateSellerCommandHandler(new CreateSeller($this->repository()));
+    }
 
 
 }

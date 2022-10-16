@@ -8,13 +8,7 @@ use Granah\CartShop\Tests\CartShop\Cart\CartModuleUnitTestCase;
 
 final class AddProductCartCommandHandlerTest extends CartModuleUnitTestCase
 {
-    private AddProductCartCommandHandler | null $handler;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->handler = new AddProductCartCommandHandler(new AddProductCart($this->repository()));
-    }
+    private AddProductCartCommandHandler|null $handler;
 
     /**
      * @test
@@ -24,6 +18,12 @@ final class AddProductCartCommandHandlerTest extends CartModuleUnitTestCase
         $command = AddProductCartCommandMother::create();
         $this->shouldSave();
         $this->dispatch($command, $this->handler);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->handler = new AddProductCartCommandHandler(new AddProductCart($this->repository()));
     }
 
 }

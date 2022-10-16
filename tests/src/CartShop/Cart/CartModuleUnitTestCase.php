@@ -24,6 +24,11 @@ class CartModuleUnitTestCase extends UnitTestCase
             ->once();
     }
 
+    protected function repository(): CartRepository|MockInterface
+    {
+        return $this->repository = $this->repository ?? Mockery::mock(CartRepository::class);
+    }
+
     protected function shouldDelete()
     {
         $this->repository()
@@ -47,10 +52,5 @@ class CartModuleUnitTestCase extends UnitTestCase
             ->shouldReceive('confirm')
             ->with(\Mockery::type(CartId::class))
             ->once();
-    }
-
-    protected function repository(): CartRepository|MockInterface
-    {
-        return $this->repository = $this->repository ?? Mockery::mock(CartRepository::class);
     }
 }

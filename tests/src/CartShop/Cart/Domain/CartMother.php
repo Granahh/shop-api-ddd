@@ -12,11 +12,12 @@ use Granah\CartShop\Tests\CartShop\Product\Domain\ProductIdMother;
 final class CartMother
 {
     public static function create(
-        CartId $id = null,
-        ProductId $productId = null,
-        CartQuantity $quantity = null,
+        CartId        $id = null,
+        ProductId     $productId = null,
+        CartQuantity  $quantity = null,
         CartConfirmed $confirmed = null
-    ): Cart {
+    ): Cart
+    {
         return Cart::create(
             $id ?? CartIdMother::create(),
             $productId ?? ProductIdMother::create(),

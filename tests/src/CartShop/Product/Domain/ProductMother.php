@@ -13,12 +13,13 @@ use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 final class ProductMother
 {
     public static function create(
-        ProductId $id = null,
-        ProductName $name = null,
+        ProductId          $id = null,
+        ProductName        $name = null,
         ProductDescription $description = null,
-        ProductPrice $price = null,
-        SellerId $sellerId = null
-    ): Product {
+        ProductPrice       $price = null,
+        SellerId           $sellerId = null
+    ): Product
+    {
         return Product::create(
             $id ?? ProductIdMother::create(),
             $name ?? ProductNameMother::create(),

@@ -13,13 +13,13 @@ final class SellerPutController extends ApiController
 {
     public function __invoke(string $id, Request $request): Response
     {
-            $this->dispatch(
-                new CreateSellerCommand(
-                    $id,
-                    $request->request->get('name'),
-                    $request->request->get('email')));
+        $this->dispatch(
+            new CreateSellerCommand(
+                $id,
+                $request->request->get('name'),
+                $request->request->get('email')));
 
-            return new Response(null,Response::HTTP_CREATED);
+        return new Response(null, Response::HTTP_CREATED);
     }
 
     protected function exceptions(): array

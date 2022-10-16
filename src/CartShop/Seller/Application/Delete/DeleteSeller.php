@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Granah\CartShop\Seller\Application\Delete;
 
 use Granah\CartShop\Seller\Domain\FindSeller;
@@ -9,7 +10,7 @@ use Granah\CartShop\Shared\Domain\SellerId;
 
 final class DeleteSeller
 {
-    public function __construct(private SellerRepository $repository,private FindSeller $findSeller)
+    public function __construct(private SellerRepository $repository, private FindSeller $findSeller)
     {
     }
 

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Granah\CartShop\Seller\Infrastructure;
 
 use Granah\CartShop\Seller\Domain\Seller;
@@ -25,6 +26,7 @@ final class DoctrineSellerRepository extends DoctrineRepository implements Selle
         return $this->repository(Seller::class)->find($id);
     }
 }
+
 {
 
 }

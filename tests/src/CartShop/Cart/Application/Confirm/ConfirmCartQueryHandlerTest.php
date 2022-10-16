@@ -10,12 +10,6 @@ final class ConfirmCartQueryHandlerTest extends CartModuleUnitTestCase
 {
     private ConfirmCartQueryHandler|null $handler;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->handler = new ConfirmCartQueryHandler(new ConfirmCart($this->repository()));
-    }
-
     /**
      * @test
      */
@@ -23,7 +17,13 @@ final class ConfirmCartQueryHandlerTest extends CartModuleUnitTestCase
     {
         $command = ConfirmCartCommandMother::create();
         $this->shouldConfirm();
-        $this->dispatch($command,$this->handler);
+        $this->dispatch($command, $this->handler);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->handler = new ConfirmCartQueryHandler(new ConfirmCart($this->repository()));
     }
 
 }

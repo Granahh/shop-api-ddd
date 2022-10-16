@@ -16,12 +16,6 @@ final class GetCartQueryHandlerTest extends CartModuleUnitTestCase
 {
     private GetCartQueryHandler|null $handler;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->handler = new GetCartQueryHandler(new GetCart($this->repository()));
-    }
-
     /**
      * @test
      */
@@ -33,7 +27,14 @@ final class GetCartQueryHandlerTest extends CartModuleUnitTestCase
 
         $this->shouldSearch($productsCart);
         $responseExpected = GetCartResponse::build($productsCart);
-        $this->assertAskResponse($responseExpected, $query,$this->handler);
+        $this->assertAskResponse($responseExpected, $query, $this->handler);
+    }
+
+    private function buildProductsCart(CartId $id): ProductsCart
+    {
+        $productsCart = new ProductsCart([]);
+        $productsCart->add(CartMother::create($id));
+        return $productsCart;
     }
 
     /**
@@ -46,13 +47,12 @@ final class GetCartQueryHandlerTest extends CartModuleUnitTestCase
         $productsCart = new ProductsCart([]);
         $this->shouldSearch($productsCart);
         $responseExpected = new GetCartResponseEmpty();
-        $this->assertAskResponse($responseExpected, $query,$this->handler);
+        $this->assertAskResponse($responseExpected, $query, $this->handler);
     }
 
-    private function buildProductsCart(CartId $id): ProductsCart
+    protected function setUp(): void
     {
-        $productsCart = new ProductsCart([]);
-        $productsCart->add(CartMother::create($id));
-        return $productsCart;
+        parent::setUp();
+        $this->handler = new GetCartQueryHandler(new GetCart($this->repository()));
     }
 }

@@ -14,12 +14,6 @@ final class FindSellerQueryHandlerTest extends SellerModuleUnitTestCase
 {
     private FindSellerQueryHandler|null $handler;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->handler = new FindSellerQueryHandler(new FindSeller($this->repository()));
-    }
-
     /**
      * @test
      */
@@ -36,7 +30,6 @@ final class FindSellerQueryHandlerTest extends SellerModuleUnitTestCase
         $this->assertAskResponse($findSellerReponseExpect, $query, $this->handler);
     }
 
-
     /**
      * @test
      */
@@ -45,5 +38,11 @@ final class FindSellerQueryHandlerTest extends SellerModuleUnitTestCase
         $query = FindSellerQueryMother::create();
         $this->shouldSearch(null);
         $this->assertAskThrowsException(SellerNotFound::class, $query, $this->handler);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->handler = new FindSellerQueryHandler(new FindSeller($this->repository()));
     }
 }

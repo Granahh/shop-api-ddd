@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
+
 namespace Granah\CartShop\Seller\Application\Create;
 
-use Granah\CartShop\Seller\Domain\FindSeller;
 use Granah\CartShop\Seller\Domain\Seller;
 use Granah\CartShop\Seller\Domain\SellerAlreadyExists;
 use Granah\CartShop\Seller\Domain\SellerEmail;
@@ -17,10 +17,9 @@ final class CreateSeller
     {
     }
 
-    public function __invoke(SellerId $id, SellerName $name, SellerEmail $email)
+    public function __invoke(SellerId $id, SellerName $name, SellerEmail $email): void
     {
-        if ($this->repository->search($id) !== null)
-        {
+        if ($this->repository->search($id) !== null) {
             throw new SellerAlreadyExists($id);
         }
 

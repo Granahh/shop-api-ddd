@@ -14,11 +14,6 @@ final class DeleteProductCommandHandlerTest extends ProductModuleUnitTestCase
 {
     private DeleteProductCommandHandler|null $handler;
 
-    protected function setUp(): void
-    {
-        $this->handler = new DeleteProductCommandHandler(new DeleteProduct($this->repository()));
-    }
-
     /**
      * @test
      */
@@ -43,5 +38,10 @@ final class DeleteProductCommandHandlerTest extends ProductModuleUnitTestCase
         $this->expectException(ProductNotFound::class);
 
         $this->dispatch($command, $this->handler);
+    }
+
+    protected function setUp(): void
+    {
+        $this->handler = new DeleteProductCommandHandler(new DeleteProduct($this->repository()));
     }
 }

@@ -14,13 +14,6 @@ final class DeleteSellerCommandHandlerTest extends SellerModuleUnitTestCase
 {
     private DeleteSellerCommandHandler|null $handler;
 
-    protected function setUp(): void
-    {
-
-        $this->handler = new DeleteSellerCommandHandler(new DeleteSeller($this->repository(),new FindSeller($this->repository())));
-        parent::setUp();
-    }
-
     /**
      * @test
      */
@@ -29,7 +22,7 @@ final class DeleteSellerCommandHandlerTest extends SellerModuleUnitTestCase
         $this->shouldSearch(SellerMother::create());
         $this->shouldDelete();
         $command = DeleteSellerCommandMother::create();
-        $this->dispatch($command,$this->handler);
+        $this->dispatch($command, $this->handler);
     }
 
     /**
@@ -40,6 +33,13 @@ final class DeleteSellerCommandHandlerTest extends SellerModuleUnitTestCase
         $this->shouldSearch(null);
         $command = DeleteSellerCommandMother::create();
         $this->expectException(SellerNotFound::class);
-        $this->dispatch($command,$this->handler);
+        $this->dispatch($command, $this->handler);
+    }
+
+    protected function setUp(): void
+    {
+
+        $this->handler = new DeleteSellerCommandHandler(new DeleteSeller($this->repository(), new FindSeller($this->repository())));
+        parent::setUp();
     }
 }

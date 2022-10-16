@@ -5,7 +5,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <embeddable name="Granah\CartShop\Product\Domain\ProductPrice">
-        <field name="value" type="string" column="price" />
+        <field name="value" type="string" column="price"/>
     </embeddable>
 
 

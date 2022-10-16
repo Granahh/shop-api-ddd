@@ -14,19 +14,9 @@ final class DbalTypesSearcher
     public static function inPath(string $path, string $contextName): array
     {
         $possibleDbalDirectories = self::possibleDbalPaths($path);
-        $dbalDirectories         = filter(self::isExistingDbalPath(), $possibleDbalDirectories);
+        $dbalDirectories = filter(self::isExistingDbalPath(), $possibleDbalDirectories);
 
         return reduce(self::dbalClassesSearcher($contextName), $dbalDirectories, []);
-    }
-
-    private static function modulesInPath(string $path): array
-    {
-        return filter(
-            static function (string $possibleModule) {
-                return !in_array($possibleModule, ['.', '..']);
-            },
-            scandir($path)
-        );
     }
 
     private static function possibleDbalPaths(string $path): array
@@ -41,6 +31,16 @@ final class DbalTypesSearcher
         );
     }
 
+    private static function modulesInPath(string $path): array
+    {
+        return filter(
+            static function (string $possibleModule) {
+                return !in_array($possibleModule, ['.', '..']);
+            },
+            scandir($path)
+        );
+    }
+
     private static function isExistingDbalPath(): callable
     {
         return static function (string $path) {
@@ -48,18 +48,11 @@ final class DbalTypesSearcher
         };
     }
 
-    private static function namespaceFormatter($baseNamespace): callable
-    {
-        return static function (string $path, string $module) use ($baseNamespace) {
-            return "$baseNamespace\\$module\Domain";
-        };
-    }
-
     private static function dbalClassesSearcher(string $contextName): callable
     {
         return static function (array $totalNamespaces, string $path) use ($contextName) {
             $possibleFiles = scandir($path);
-            $files         = filter(
+            $files = filter(
                 static function ($file) {
                     return Utils::endsWith('Type.php', $file);
                 },
@@ -68,7 +61,7 @@ final class DbalTypesSearcher
 
             $namespaces = map(
                 static function (string $file) use ($path, $contextName) {
-                    $fullPath     = "$path/$file";
+                    $fullPath = "$path/$file";
                     $splittedPath = explode("/src/$contextName/", $fullPath);
 
                     $classWithoutPrefix = str_replace(['.php', '/'], ['', '\\'], $splittedPath[1]);
@@ -79,6 +72,13 @@ final class DbalTypesSearcher
             );
 
             return array_merge($totalNamespaces, $namespaces);
+        };
+    }
+
+    private static function namespaceFormatter($baseNamespace): callable
+    {
+        return static function (string $path, string $module) use ($baseNamespace) {
+            return "$baseNamespace\\$module\Domain";
         };
     }
 }

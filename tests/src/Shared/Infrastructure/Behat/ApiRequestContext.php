@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Granah\CartShop\Tests\Shared\Infrastructure\Behat;
 
@@ -23,6 +23,7 @@ final class ApiRequestContext extends RawMinkContext
     private MinkSessionRequestHelper $request;
     private DatabaseCleaner $dbCleaner;
     private EntityManager $em;
+
     public function __construct(Session $session, DatabaseCleaner $dbCleaner, EntityManager $em)
     {
         $this->request = new MinkSessionRequestHelper(new MinkHelper($session));
@@ -60,11 +61,11 @@ final class ApiRequestContext extends RawMinkContext
     /**
      * @Given I create a valid product with id :id and sellerId :sellerId
      */
-    public function iCreateAValidProduct(string $id,string $sellerId): void
+    public function iCreateAValidProduct(string $id, string $sellerId): void
     {
         $productId = new ProductId($id);
         $sellerId = new SellerId($sellerId);
-        $product = ProductMother::create($productId,null,null,null,$sellerId);
+        $product = ProductMother::create($productId, null, null, null, $sellerId);
         $this->em->persist($product);
         $this->em->flush();
     }

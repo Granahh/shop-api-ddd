@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Granah\Shared\Infrastructure\Doctrine;
 
 
-use Granah\Shared\Infrastructure\Doctrine\Dbal\DbalCustomTypesRegistrar;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Schema\MySqlSchemaManager;
 use Doctrine\ORM\Configuration;
@@ -12,6 +11,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\Setup;
+use Granah\Shared\Infrastructure\Doctrine\Dbal\DbalCustomTypesRegistrar;
 use RuntimeException;
 use function Lambdish\Phunctional\dissoc;
 
@@ -22,12 +22,13 @@ final class DoctrineEntityManagerFactory
     ];
 
     public static function create(
-        array $parameters,
-        array $contextPrefixes,
-        bool $isDevMode,
+        array  $parameters,
+        array  $contextPrefixes,
+        bool   $isDevMode,
         string $schemaFile,
-        array $dbalCustomTypesClasses
-    ): EntityManagerInterface {
+        array  $dbalCustomTypesClasses
+    ): EntityManagerInterface
+    {
         if ($isDevMode) {
             self::generateDatabaseIfNotExists($parameters, $schemaFile);
         }
@@ -41,10 +42,10 @@ final class DoctrineEntityManagerFactory
     {
         self::ensureSchemaFileExists($schemaFile);
 
-        $databaseName                  = $parameters['dbname'];
+        $databaseName = $parameters['dbname'];
         $parametersWithoutDatabaseName = dissoc($parameters, 'dbname');
-        $connection                    = DriverManager::getConnection($parametersWithoutDatabaseName);
-        $schemaManager                 = new MySqlSchemaManager($connection);
+        $connection = DriverManager::getConnection($parametersWithoutDatabaseName);
+        $schemaManager = new MySqlSchemaManager($connection);
 
         if (!self::databaseExists($databaseName, $schemaManager)) {
             $schemaManager->createDatabase($databaseName);
@@ -55,11 +56,6 @@ final class DoctrineEntityManagerFactory
         $connection->close();
     }
 
-    private static function databaseExists($databaseName, MySqlSchemaManager $schemaManager): bool
-    {
-        return in_array($databaseName, $schemaManager->listDatabases(), true);
-    }
-
     private static function ensureSchemaFileExists(string $schemaFile): void
     {
         if (!file_exists($schemaFile)) {
@@ -67,9 +63,14 @@ final class DoctrineEntityManagerFactory
         }
     }
 
+    private static function databaseExists($databaseName, MySqlSchemaManager $schemaManager): bool
+    {
+        return in_array($databaseName, $schemaManager->listDatabases(), true);
+    }
+
     private static function createConfiguration(array $contextPrefixes, bool $isDevMode): Configuration
     {
-        $config = Setup::createConfiguration($isDevMode, null,null);
+        $config = Setup::createConfiguration($isDevMode, null, null);
 
         $config->setMetadataDriverImpl(new SimplifiedXmlDriver(array_merge(self::$sharedPrefixes, $contextPrefixes)));
 

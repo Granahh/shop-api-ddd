@@ -11,21 +11,21 @@ use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 
 final class SellerMother
 {
-    public static function create(?SellerId $id = null, ?SellerName $name = null, ?SellerEmail $email = null): Seller
-    {
-        return new Seller(
-            $id ?? SellerIdMother::create(),
-            $name ?? SellerNameMother::create(),
-            $email ?? SellerEmailMother::create()
-        );
-    }
-
     public static function fromRequest(CreateSellerCommand $request): Seller
     {
         return new Seller(
             SellerIdMother::create($request->id()),
             SellerNameMother::create($request->name()),
             SellerEmailMother::create($request->email())
+        );
+    }
+
+    public static function create(?SellerId $id = null, ?SellerName $name = null, ?SellerEmail $email = null): Seller
+    {
+        return new Seller(
+            $id ?? SellerIdMother::create(),
+            $name ?? SellerNameMother::create(),
+            $email ?? SellerEmailMother::create()
         );
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Granah\CartShop\Tests\CartShop\Seller\Application\Create;
+
 use Granah\CartShop\Seller\Application\Create\CreateSellerCommand;
 use Granah\CartShop\Seller\Domain\SellerEmail;
 use Granah\CartShop\Seller\Domain\SellerName;
@@ -13,10 +14,11 @@ use Granah\CartShop\Tests\CartShop\Shared\Domain\SellerIdMother;
 final class CreateSellerCommandMother
 {
     public static function create(
-        ?SellerId $id = null,
-        ?SellerName $name = null,
+        ?SellerId    $id = null,
+        ?SellerName  $name = null,
         ?SellerEmail $email = null
-    ): CreateSellerCommand {
+    ): CreateSellerCommand
+    {
         return new CreateSellerCommand(
             $id ?? SellerIdMother::create(),
             $name ?? SellerNameMother::create()->value(),

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Granah\Shared\Infrastructure\Bus\Query;
 
 use Granah\Shared\Domain\Bus\Query\Query;

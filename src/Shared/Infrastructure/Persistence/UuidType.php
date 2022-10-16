@@ -9,18 +9,16 @@ use Granah\Shared\Domain\ValueObject\Uuid;
 use function Lambdish\Phunctional\last;
 
 
-abstract class UuidType extends StringType 
+abstract class UuidType extends StringType
 {
-    abstract protected function typeClassName(): string;
+    public function getName(): string
+    {
+        return self::customTypeName();
+    }
 
     public static function customTypeName(): string
     {
         return Utils::toSnakeCase(str_replace('Type', '', last(explode('\\', static::class))));
-    }
-
-    public function getName(): string
-    {
-        return self::customTypeName();
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
@@ -29,6 +27,8 @@ abstract class UuidType extends StringType
 
         return new $className($value);
     }
+
+    abstract protected function typeClassName(): string;
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {

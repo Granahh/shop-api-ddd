@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Granah\Apps\CartShop\Backend\Controller\HealthCheck;
 
@@ -24,7 +24,7 @@ final class HealthCheckGetController
         return new JsonResponse(
             [
                 'cart_shop-backend' => 'ok',
-                'rand'         => $this->generator->generate(),
+                'rand' => $this->generator->generate(),
             ]
         );
     }

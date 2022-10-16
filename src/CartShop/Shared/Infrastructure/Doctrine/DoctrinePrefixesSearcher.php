@@ -13,19 +13,9 @@ final class DoctrinePrefixesSearcher
     public static function inPath(string $path, string $baseNamespace): array
     {
         $possibleMappingDirectories = self::possibleMappingPaths($path);
-        $mappingDirectories         = filter(self::isExistingMappingPath(), $possibleMappingDirectories);
+        $mappingDirectories = filter(self::isExistingMappingPath(), $possibleMappingDirectories);
 
         return array_flip(reindex(self::namespaceFormatter($baseNamespace), $mappingDirectories));
-    }
-
-    private static function modulesInPath(string $path): array
-    {
-        return filter(
-            static function (string $possibleModule) {
-                return !in_array($possibleModule, ['.', '..']);
-            },
-            scandir($path)
-        );
     }
 
     private static function possibleMappingPaths(string $path): array
@@ -37,6 +27,16 @@ final class DoctrinePrefixesSearcher
                 return realpath("$path/$module/$mappingsPath");
             },
             array_flip(self::modulesInPath($path))
+        );
+    }
+
+    private static function modulesInPath(string $path): array
+    {
+        return filter(
+            static function (string $possibleModule) {
+                return !in_array($possibleModule, ['.', '..']);
+            },
+            scandir($path)
         );
     }
 

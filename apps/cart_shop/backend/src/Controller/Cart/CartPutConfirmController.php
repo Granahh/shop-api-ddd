@@ -2,7 +2,6 @@
 
 namespace Granah\Apps\CartShop\Backend\Controller\Cart;
 
-use Granah\CartShop\Cart\Application\Add\AddProductCartCommand;
 use Granah\CartShop\Cart\Application\Confirm\ConfirmCartCommand;
 use Granah\Shared\Infrastructure\ApiController;
 use Symfony\Component\HttpFoundation\Request;

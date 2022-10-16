@@ -14,6 +14,6 @@ final class DeleteCart
 
     public function __invoke(CartId $id): void
     {
-      $this->repository->delete($id);
+        $this->repository->delete($id);
     }
 }

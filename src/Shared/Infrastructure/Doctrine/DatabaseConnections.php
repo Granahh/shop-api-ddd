@@ -10,16 +10,11 @@ use function Lambdish\Phunctional\each;
 
 final class DatabaseConnections
 {
-    private  $connections = [];
+    private $connections = [];
 
     public function __construct(iterable $connections)
     {
         $this->connections = iterator_to_array($connections);
-    }
-
-    public function clear(): void
-    {
-        each($this->clearer(), $this->connections);
     }
 
     public function allConnectionsClearer(): callable
@@ -29,9 +24,9 @@ final class DatabaseConnections
         };
     }
 
-    public function truncate(): void
+    public function clear(): void
     {
-        apply(new DatabaseCleaner(), array_values($this->connections));
+        each($this->clearer(), $this->connections);
     }
 
     private function clearer(): callable
@@ -39,5 +34,10 @@ final class DatabaseConnections
         return static function (EntityManager $entityManager) {
             $entityManager->clear();
         };
+    }
+
+    public function truncate(): void
+    {
+        apply(new DatabaseCleaner(), array_values($this->connections));
     }
 }

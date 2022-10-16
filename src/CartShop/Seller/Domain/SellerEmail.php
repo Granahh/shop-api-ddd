@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Granah\CartShop\Seller\Domain;
 
 final class SellerEmail

@@ -20,7 +20,7 @@ final class SellerDeleteController extends ApiController
             )
         );
 
-        return new Response(null,Response::HTTP_OK);
+        return new Response(null, Response::HTTP_OK);
     }
 
     protected function exceptions(): array
@@ -28,6 +28,7 @@ final class SellerDeleteController extends ApiController
         return [SellerNotFound::class => Response::HTTP_NOT_FOUND];
     }
 }
+
 {
 
 }
